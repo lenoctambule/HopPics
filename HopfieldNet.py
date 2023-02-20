@@ -24,6 +24,7 @@ class HopfieldNet:
                         res[i] += self.weights[i,j] * data[j]
             #print("Step ",k+1,": ",[int(np.sign(i) * -1) for i in res])
         return [int(np.sign(i)) for i in res]
+        #return res
 
 import random as rd
 import matplotlib.pyplot as plt
@@ -71,7 +72,7 @@ if __name__ == "__main__":
     plt.title('Weight matrix')
 
     plt.subplot(2,3,3)
-    plt.imshow(np.reshape(res, (10,10)))
+    plt.imshow(np.reshape([int(np.sign(i)) for i in res], (10,10)))
     plt.title('After')
     
     plt.subplot(2,3,2)
@@ -81,6 +82,7 @@ if __name__ == "__main__":
     plt.subplot(2,3,4)
     plt.imshow(arr[0])
     plt.title('Trained pattern 1')
+
     plt.subplot(2,3,5)
     plt.imshow(arr[1])
     plt.title('Trained pattern 2')
