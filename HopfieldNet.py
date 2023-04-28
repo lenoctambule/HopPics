@@ -62,8 +62,6 @@ if __name__ == "__main__":
 
     res = hp.predict(test, steps=30)
 
-
-
     print(np.reshape(res, (10,10)))
     #print(np.reshape(hp.weights, (100,100)))
 
