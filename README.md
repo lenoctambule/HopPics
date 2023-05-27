@@ -2,6 +2,28 @@
 
 [Github Repository](https://github.com/lenoctambule/HopPics)
 
+## Installation
+
+Installing requirements :
+```console
+$ py -m pip install -r requirements.txt
+```
+## Usage
+
+Running tests :
+```console
+$ py test.py <image_path> <nsteps>
+$ py test.py example.png 4
+```
+
+Usage in code :
+```py
+from HopPics import *
+
+hp = HopPics('path_to_pic.png')
+hp.reconstruct_from_noise()
+```
+
 ## I. Introduction
 
 Hopfield networks (HNs) are among the simplest neural networks models to understand and explain. It only requires basic understanding of matrices and graph theory. It tackles the notion of associative memory and shows a few limitations that are worth taking note of.
