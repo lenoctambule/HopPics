@@ -2,8 +2,14 @@ from HopPics import *
 import sys
 
 if __name__ == "__main__" :
-	if len(sys.argv) != 2 :
-		print("Usage : py test.py <image_path>")
+	if len(sys.argv) != 3 :
+		print("Usage : py test.py <image_path> <nsteps>")
 		exit()
-	hp = HopPics(sys.argv[1])
-	hp.reconstruct_from_noise(noise_amount=5_000)
+	try :
+		hp = HopPics(sys.argv[1])
+	except :
+		print("Image could not be read.")
+	try :
+		hp.reconstruct_from_noise(noise_amount=5_000, steps=int(sys.argv[2]))
+	except :
+		print("Invalid steps numbers.")	
