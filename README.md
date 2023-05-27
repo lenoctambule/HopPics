@@ -82,10 +82,6 @@ The main limitation of HNs is the limited number of patterns that can be trained
 
 Recent work has shown that this behaviour of pattern recognition and self-reconstruction can also be achieved through the more convenient method of training cellular automatas to self regenerate or self classification. And I think this is where I'll be headed towards for my next AI project.
 
-## Links
-
-[Github Repository](https://github.com/lenoctambule/HopPics)
-
 ## Useful Ressources
 
 - [*Hopfield Network*, Alice Julien-Laferriere](http://perso.ens-lyon.fr/eric.thierry/Graphes2010/alice-julien-laferriere.pdf)
