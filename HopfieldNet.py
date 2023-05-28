@@ -15,11 +15,14 @@ class HopfieldNet:
 						new[i,j] += (data[i] * data[j])
 		self.weights = np.add(self.weights, new / self.data_len)
 
-	def steps(self,data, steps=2):
+	def compute_step(self, data, res):
+		for i in range(len(data)):
+			for j in range(len(data)):
+				if i != j :
+					res[i] += self.weights[i,j] * data[j]
+
+	def run(self,data, steps=2):
 		res = data.copy()
 		for k in tqdm.tqdm(range(steps)):
-			for i in range(len(data)):
-				for j in range(len(data)):
-					if i != j :
-						res[i] += self.weights[i,j] * data[j]
+			self.compute_step(data,res)
 		return [int(np.sign(i)) for i in res]
