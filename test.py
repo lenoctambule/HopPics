@@ -6,10 +6,8 @@ if __name__ == "__main__" :
 		print("Usage : py test.py <image_path> <nsteps>")
 		exit()
 	try :
-		hp = HopPics(sys.argv[1])
+		hp = HopPics(sys.argv[1], 50)
 	except :
 		print("Image could not be read.")
-	try :
-		hp.reconstruct_from_noise(noise_amount=5_000, steps=int(sys.argv[2]))
-	except :
-		print("Invalid steps numbers.")	
+		exit()
+	hp.reconstruct_from_noise(noise_amount=5_000, n_steps=int(sys.argv[2]))
