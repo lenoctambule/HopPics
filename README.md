@@ -1,6 +1,11 @@
 # HopPics : Python Implementation of Binary Hopfield Network for self-reconstructing binary images
 
-[Github Repository](https://github.com/lenoctambule/HopPics)
+<figure>
+<p align=center>
+<img src=[./figures/gifdemo.gif](./figures/gifdemo.gif)>
+<figcaption><p align=center><b>Fig 2</b> : Examples of a destroyed picture of Margaret Hamilton reconstructed after 4 steps. </p></figcaption>
+</p>
+</figure>
 
 ## Installation
 
