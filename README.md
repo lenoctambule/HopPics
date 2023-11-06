@@ -2,7 +2,7 @@
 
 <figure>
 <p align=center>
-<img src=[./figures/gifdemo.gif](./figures/gifdemo.gif)>
+<img src=https://raw.githubusercontent.com/lenoctambule/HopPics/main/figures/gifdemo.gif>
 <figcaption><p align=center><b>Fig 2</b> : Examples of a destroyed picture of Margaret Hamilton reconstructed after 4 steps. </p></figcaption>
 </p>
 </figure>
