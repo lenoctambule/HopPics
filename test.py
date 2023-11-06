@@ -10,4 +10,4 @@ if __name__ == "__main__" :
 	except :
 		print("Image could not be read.")
 		exit()
-	hp.reconstruct_from_noise(noise_amount=5_000, n_steps=int(sys.argv[2]))
+	hp.reconstruct_from_noise(noise_amount=10000, n_steps=int(sys.argv[2]))

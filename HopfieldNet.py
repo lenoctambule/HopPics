@@ -22,7 +22,7 @@ class HopfieldNet:
 		for j in range(0, len(data)):
 			if i != j :
 				res[i] += self.weights[i,j] * data[j]
-		return res
+		return res.copy()
 
 	def run(self,data, steps=2):
 		res = data.copy()

@@ -2,6 +2,7 @@ from PIL import Image
 import matplotlib.pyplot as plt
 import random as rd
 from HopfieldNet import *
+import numpy as np
 
 class HopPics:
 	gif_images = []
@@ -30,9 +31,19 @@ class HopPics:
 		plt.imshow(np.reshape(test, (self.img.size[1], self.img.size[0])))
 		plt.title('Before')
 		plt.subplot(1,4,2)
-		plt.imshow(np.reshape(res, (self.img.size[1],self.img.size[0])))
+		plt.imshow(np.reshape(res, (self.img.size[1], self.img.size[0])))
 		plt.title('After')
 		plt.show()
+
+	def	gen_gif(self, steps):
+		res = []
+		for i in range(0, len(steps), 100):
+			step = [0 if int(np.sign(i)) < 0 else 255 for i in steps[i]]
+			step = np.reshape(step, (self.img.size[1], self.img.size[0]))
+			step = step.astype(np.uint8)
+			res.append(Image.fromarray(step).convert('RGB'))
+		frame_0 = res[0]
+		frame_0.save("res.gif", format="GIF", append_images=res, save_all=True, duration=1, loop=0)
 
 	def reconstruct_from_noise(self, noise_amount=50, n_steps=4):
 		test = np.asarray(self.pixels.copy(), dtype=float)
@@ -41,5 +52,6 @@ class HopPics:
 		print("Starting reconstruction.")
 		res, steps = self.hp.run(data=test, steps=n_steps)
 		print("Reconstruction complete")
+		self.gen_gif(steps)
 		self.plot(test, res, steps)
 
