@@ -83,14 +83,14 @@ The fact that the weights are strenghtened if they have the same state will give
 
 <figure>
 <p align=center>
-<img src=/static/media/editor/margaret_hamilton_20230527013830315381.png>
+<img src=./figures/margaret_hamilton.png>
 <figcaption><p align=center><b>Fig 2</b> : Examples of a destroyed picture of Margaret Hamilton reconstructed after 4 steps. </p></figcaption>
 </p>
 </figure>
 
 <figure>
 <p align=center>
-<img src=/static/media/editor/panda_20230527013726926601.png>
+<img src=./figures/panda.png>
 <figcaption><p align=center><b>Fig 3</b> : Examples of a destroyed image of a panda reconstructed after 8 steps. </p></figcaption>
 </p>
 </figure>
