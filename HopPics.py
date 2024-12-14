@@ -50,7 +50,7 @@ class HopPics:
 		for i in range(noise_amount) :
 			test[rd.randint(0,self.datalen - 1)] = -1 if rd.randint(0,2) == 0 else 1
 		print("Starting reconstruction.")
-		res, steps = self.hp.run(data=test, steps=n_steps)
+		res, steps = self.hp.run(data=test.copy(), steps=n_steps)
 		print("Reconstruction complete")
 		self.gen_gif(steps)
 		self.plot(test, res, steps)

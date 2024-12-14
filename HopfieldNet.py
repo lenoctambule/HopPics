@@ -3,30 +3,23 @@ import tqdm
 import random as rd
 
 class HopfieldNet:
+
 	def __init__(self, data_len, learning_rate):
 		self.data_len = data_len
 		self.learning_rate = learning_rate
+		self.N = 0
 		self.weights = np.zeros((data_len, data_len),dtype=float)
 
 	def train(self,data_arr):
-		new = self.weights.copy()
-		for data in data_arr:
-			for i in range(self.data_len):
-				for j in range(self.data_len) :
-					if i != j :
-						new[i,j] += (data[i] * data[j]) * self.learning_rate
-		self.weights = np.add(self.weights, new / self.data_len)
+		self.N += 1
+		self.weights += np.outer(data_arr, data_arr)
 
-	def compute_step(self, data, res):
-		i = rd.randrange(len(data))
-		for j in range(0, len(data)):
-			if i != j :
-				res[i] += self.weights[i,j] * data[j]
-		return res.copy()
+	def compute_step(self, v_1):
+		v_1 += np.einsum('ij,j->i', self.weights, v_1)
+		return v_1
 
-	def run(self,data, steps=2):
-		res = data.copy()
+	def run(self, data, steps=2):
 		frames = []
 		for k in tqdm.tqdm(range(steps)):
-			frames.append(self.compute_step(data,res))
-		return [int(np.sign(i)) for i in res], frames
+			frames.append(self.compute_step(data))
+		return np.sign(data), frames
