@@ -1,7 +1,7 @@
 from PIL import Image
 import matplotlib.pyplot as plt
 import random as rd
-from HopfieldNet import *
+from ClassicHopfieldNet import *
 import numpy as np
 
 class HopPics:
@@ -16,7 +16,7 @@ class HopPics:
 		self.datalen = self.img.size[0] * self.img.size[1]
 		self.hp = HopfieldNet(data_len=self.datalen, learning_rate=learning_rate)
 		print("Starting training ...")
-		self.hp.train([self.pixels])
+		self.hp.train(self.pixels)
 		print("Training complete.")
 
 	def plot(self, test, res, steps):
@@ -25,7 +25,7 @@ class HopPics:
 		plt.imshow(self.img)
 		plt.title('Original')
 		plt.subplot(1,4,3)
-		plt.imshow(self.hp.weights)
+		plt.imshow(self.hp.W)
 		plt.title('Weights')
 		plt.subplot(1,4,1)
 		plt.imshow(np.reshape(test, (self.img.size[1], self.img.size[0])))
@@ -50,8 +50,8 @@ class HopPics:
 		for i in range(noise_amount) :
 			test[rd.randint(0,self.datalen - 1)] = -1 if rd.randint(0,2) == 0 else 1
 		print("Starting reconstruction.")
-		res, steps = self.hp.run(data=test.copy(), steps=n_steps)
+		res, steps = self.hp.run(v_0=test.copy(), steps=n_steps)
 		print("Reconstruction complete")
-		self.gen_gif(steps)
+		# self.gen_gif(steps)
 		self.plot(test, res, steps)
 
