@@ -10,8 +10,8 @@ class HopfieldNet:
 		self.W = np.zeros((data_len, data_len),dtype=float)
 
 	def train(self,v):
+		self.W = ((self.W * self.N) + np.outer(v, v) * self.learning_rate) / (self.N + 1)
 		self.N += 1
-		self.W += np.outer(v, v) * self.learning_rate
 
 	def compute_step(self, v_n):
 		v_n += np.einsum('ij,j->i', self.W, v_n)
