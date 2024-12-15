@@ -18,7 +18,7 @@ class HopfieldNet:
 		return v_n
 
 	def run(self, v_0, steps=2):
-		frames = []
+		frames = [v_0.copy()]
 		for k in tqdm.tqdm(range(steps)):
 			frames.append(self.compute_step(v_0))
 		return np.sign(v_0), frames

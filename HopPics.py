@@ -37,13 +37,13 @@ class HopPics:
 
 	def	gen_gif(self, steps):
 		res = []
-		for i in range(0, len(steps), 100):
-			step = [0 if int(np.sign(i)) < 0 else 255 for i in steps[i]]
+		for i in range(0, len(steps)):
+			step = np.sign(steps[i]) * -1
 			step = np.reshape(step, (self.img.size[1], self.img.size[0]))
 			step = step.astype(np.uint8)
 			res.append(Image.fromarray(step).convert('RGB'))
 		frame_0 = res[0]
-		frame_0.save("res.gif", format="GIF", append_images=res, save_all=True, duration=1, loop=0)
+		frame_0.save("res.gif", format="GIF", append_images=res, save_all=True, duration=1000, loop=0)
 
 	def reconstruct_from_noise(self, noise_amount=50, n_steps=4):
 		test = np.asarray(self.pixels.copy(), dtype=float)
@@ -52,6 +52,6 @@ class HopPics:
 		print("Starting reconstruction.")
 		res, steps = self.hp.run(v_0=test.copy(), steps=n_steps)
 		print("Reconstruction complete")
-		# self.gen_gif(steps)
+		self.gen_gif(steps)
 		self.plot(test, res, steps)
 
