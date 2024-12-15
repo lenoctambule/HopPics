@@ -3,7 +3,6 @@ import tqdm
 import random as rd
 
 class HopfieldNet:
-
 	def __init__(self, data_len, learning_rate):
 		self.data_len = data_len
 		self.learning_rate = learning_rate
@@ -12,7 +11,7 @@ class HopfieldNet:
 
 	def train(self,v):
 		self.N += 1
-		self.W += np.outer(v, v)
+		self.W += np.outer(v, v) * self.learning_rate
 
 	def compute_step(self, v_n):
 		v_n += np.einsum('ij,j->i', self.W, v_n)
